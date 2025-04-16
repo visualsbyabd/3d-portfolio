@@ -11,7 +11,7 @@ const navItems = [
 ];
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(window.scrollY > 10);
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -21,7 +21,7 @@ const Header = () => {
   }, []);
   return (
     <header
-      className={`lg:max-w-7xl w-[90vw] max-w-[90vw] px-2 py-4 flex flex-row items-center justify-between ${scrolled ? "bg-gray-500/10 backdrop-blur-md" : "bg-transparent"} duration-500 ease rounded-xl fixed left-1/2 -translate-x-1/2`}
+      className={`z-50 top-8 lg:max-w-7xl w-[90vw] max-w-[90vw] px-4 py-4 flex flex-row items-center justify-between ${scrolled ? "bg-gray-500/10 backdrop-blur-md" : "bg-transparent"} duration-500 ease rounded-2xl fixed left-1/2 -translate-x-1/2`}
     >
       <div className="flex flex-row items-center justify-start gap-2">
         <Link href="/" className="text-xl lg:text-2xl font-lufga font-bold">
@@ -37,7 +37,7 @@ const Header = () => {
           </div>
         </Link>
       </div>
-      <div className="hidden md:flex flex-row items-center justify-center gap-4">
+      <div className="hidden md:flex flex-row items-center justify-center gap-4 -ml-10">
         {navItems.map((navItem) => (
           <Link
             key={navItem.title}
@@ -48,7 +48,6 @@ const Header = () => {
           </Link>
         ))}
       </div>
-
       <Link
         href={"#contact"}
         className="flex flex-row items-center justify-center gap-1 bg-primary text-background font-montserrat font-semibold fill-background rounded-md px-2 py-1 border-2 border-primary"

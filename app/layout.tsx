@@ -50,12 +50,14 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
-  <html lang="en">
+  <html lang="en" suppressHydrationWarning>
     <body className={`${lufga.className} ${montserrat.className} antialiased`}>
       <main className="main-container">
         <Header />
-        <div className="max-w-7xl align-center justify-start mt-4">
-          <div className="mt-4 px-4 py-8">{children}</div>
+        <div className="w-full flex items-center justify-start">
+          <div className="w-full flex flex-col items-center justify-start">
+            {children}
+          </div>
         </div>
         <Footer />
       </main>
