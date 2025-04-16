@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+
 }
 
 @theme inline {
     --color-background: var(--background);
+    --color-background-varient: var(--background-varient);
     --color-foreground: var(--foreground);
     --color-primary: #fff5de;
     --color-accent: #ffffff;
@@ -16,6 +17,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #00020e;
+        --background-varient: #000813;
         --foreground: #ededed;
     }
 }
@@ -28,10 +30,83 @@ body {
 
 @layer utilities {
     .main-container {
-        @apply flex flex-col min-w-screen h-screen items-center justify-start px-4 py-8;
+        @apply flex flex-col h-screen items-center justify-start;
     }
 
     .col-container {
         @apply flex flex-col items-center gap-2
     }
+
+    .justify-center-end {
+        text-align-last: center;
+    }
+
+    .custom-animation-floating {
+        animation: floating 5s ease infinite;
+    }
+
+    .card-border {
+        @apply border border-background bg-background-varient;
+    }
+
+    .card {
+        --start: 0;
+        position: relative;
+        z-index: 40;
+        overflow: hidden;
+        transition: border-color 1s ease-in-out;
+    }
+
+    .card::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 12px;
+        border: 2px solid transparent;
+        background: var(--gradient);
+        background-attachment: fixed;
+        mask: linear-gradient(#0000, #0000),
+        conic-gradient(
+                from calc((var(--start) - 15) * 1deg),
+                #ffffff1f 0deg,
+                white,
+                #ffffff00 100deg
+        );
+        mask-composite: intersect;
+        mask-clip: padding-box, border-box;
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+
+    .glow {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        filter: blur(10px);
+        filter: saturate(200);
+    }
+
+    .card:hover::before {
+        opacity: 1;
+    }
+
+
 }
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(-5%);
+    }
+    50% {
+        transform: none;
+    }
+}
+
