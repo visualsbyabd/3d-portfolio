@@ -95,17 +95,17 @@ export default function TimelineSection() {
     });
   }, []);
   return (
-    <section className="w-full lg:px-0 py-4 px-2 flex flex-col items-center justify-start lg:max-w-7xl">
+    <section className="w-full lg:px-0 py-4 px-2 mt-10 flex flex-col items-center justify-start lg:max-w-7xl">
       <TitleHeader
         title="Professional Work Experience"
         sub="💼 My Career Overview"
       />
       <div className="mt-32 relative">
-        <div className="relative z-40 xl:space-y-32 space-y-10">
+        <div className="relative z-50 xl:space-y-32 space-y-10">
           {expCards.map((card) => (
-            <div key={card.title} className="exp-card-wrapper">
-              <div className="xl:w-2/6 w-9/10 mx-auto">
-                <GlowCard index={expCards.indexOf(card)}>
+            <div key={card.title} className="exp-card-wrapper z-400">
+              <div className="xl:w-2/6 w-8/10 mx-15 lg:mx-auto custom-animation-floating-with-shadow">
+                <GlowCard index={expCards.indexOf(card)} className="z-300">
                   <div className="px-4 py-6 flex flex-col items-start justify-start gap-4">
                     {/* Stars Div */}
                     <div className="gap-1 flex items-center justify-start flex-row">

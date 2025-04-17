@@ -45,6 +45,10 @@ body {
         animation: floating 5s ease infinite;
     }
 
+    .custom-animation-floating-with-shadow {
+        animation: floating 5s ease infinite;
+    }
+
     .card-border {
         @apply border border-background bg-background-varient;
     }
@@ -98,6 +102,23 @@ body {
         opacity: 1;
     }
 
+    .header-z-index {
+        z-index: 900;
+    }
+
+    .z-100 {
+        z-index: 100;
+    }
+    .z-200 {
+        z-index: 200;
+    }
+    .z-300 {
+        z-index: 300;
+    }
+    .z-400 {
+        z-index: 400;
+    }
+
     .exp-card-wrapper {
         @apply flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-between;
     }
@@ -136,6 +157,17 @@ body {
     }
     50% {
         transform: none;
+    }
+}
+
+@keyframes floating-with-shadow {
+    0%, 100% {
+        transform: translateY(-5%);
+        backdrop-filter: drop-shadow(0 0 30px var(--color-primary));
+    }
+    50% {
+        transform: none;
+        backdrop-filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0));
     }
 }
 
