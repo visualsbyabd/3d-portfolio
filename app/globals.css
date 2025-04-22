@@ -29,6 +29,8 @@ body {
 }
 
 @layer utilities {
+    textarea { resize: none; }
+
     .main-container {
         @apply flex flex-col h-screen items-center justify-start;
     }
