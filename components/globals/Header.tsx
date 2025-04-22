@@ -21,7 +21,7 @@ const Header = () => {
   }, []);
   return (
     <header
-      className={`header-z-index top-8 lg:max-w-7xl w-[90vw] max-w-[90vw] px-4 py-4 flex flex-row items-center justify-between ${scrolled ? "bg-gray-500/10 backdrop-blur-md" : "bg-transparent"} duration-500 ease rounded-2xl fixed left-1/2 -translate-x-1/2`}
+      className={`header-z-index top-8 lg:max-w-7xl w-[98%] max-w-[98%] px-4 py-4 flex flex-row items-center justify-between ${scrolled ? "bg-gray-500/10 backdrop-blur-md" : "bg-transparent"} duration-500 ease rounded-2xl fixed left-1/2 -translate-x-1/2`}
     >
       <div className="flex flex-row items-center justify-start gap-2">
         <Link href="/" className="text-xl lg:text-2xl font-lufga font-bold">
