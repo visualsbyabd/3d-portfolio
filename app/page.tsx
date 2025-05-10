@@ -6,6 +6,7 @@ import {
   ProjectsCountSection,
   FeaturedProjectsSection,
   ContactSection,
+  VideosFeaturedProjectsSection,
 } from "@/components/home";
 
 const Home = () => (
@@ -15,6 +16,7 @@ const Home = () => (
     <AboutSection />
     <TimelineSection />
     <FeaturedProjectsSection />
+    <VideosFeaturedProjectsSection />
     <SkillsSection />
     <ContactSection />
   </>
