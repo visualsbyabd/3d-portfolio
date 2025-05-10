@@ -131,8 +131,6 @@ export default function FeaturedProjectsSection() {
       bottomCardFourRef.current,
     ];
 
-    console.log(cards.map((card, i) => `${i}: ${card}`));
-
     cards.forEach((card, index) => {
       gsap.fromTo(
         card,
