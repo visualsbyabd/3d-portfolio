@@ -43,6 +43,10 @@ body {
         text-align-last: center;
     }
 
+    .justify-start-end {
+        text-align-last: left;
+    }
+
     .custom-animation-floating {
         animation: floating 5s ease infinite;
     }
