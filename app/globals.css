@@ -47,6 +47,10 @@ body {
         text-align-last: left;
     }
 
+    .aspect-reel {
+        aspect-ratio: 9/16;
+    }
+
     .custom-animation-floating {
         animation: floating 5s ease infinite;
     }
