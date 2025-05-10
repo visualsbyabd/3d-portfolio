@@ -5,3 +5,4 @@ export { default as ProjectsCountSection } from "./ProjectsCountSection";
 export { default as FeaturedProjectsSection } from "./FeaturedProjectsSection";
 export { default as SkillsSection } from "./SkillsSection";
 export { default as HeroSection } from "./HeroSection";
+export { default as VideosFeaturedProjectsSection } from "./VideosFeaturedProjectsSection";
