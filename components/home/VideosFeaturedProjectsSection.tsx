@@ -4,12 +4,13 @@ import { GlowCard, TitleHeader } from "@/components/globals";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faEye, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { formatNumber } from "@/utils/formatters";
+import { formatNumber, formatStringLength } from "@/utils/formatters";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { videos } from "@/utils/placeholders";
+import { generateVideos } from "@/utils/placeholders";
 
 const VideosFeaturedProjectsSection = () => {
+  const videos = generateVideos(6);
   const sectionRef = useRef(null);
   const videosRefs = [
     useRef(null),
@@ -105,9 +106,7 @@ const VideosFeaturedProjectsSection = () => {
                   {video.title}
                 </h4>
                 <p className="font-montserrat text-primary/50 font-medium text-xs text-justify">
-                  {video.description.length > 100
-                    ? `${video.description.substring(0, 100)}...`
-                    : video.description}
+                  {formatStringLength(video.description, 100)}
                 </p>
               </div>
               <div className="w-1/3 aspect-square rounded-full absolute left-1/2 top-1/2 -translate-1/2 bg-background-varient/50 flex items-center justify-center">

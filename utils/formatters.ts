@@ -9,3 +9,7 @@ export function formatNumber(num: number): string {
     return Math.floor(num / 1000000000) + "B";
   }
 }
+
+export function formatStringLength(text: string, maxLength: number): string {
+  return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+}
