@@ -138,7 +138,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom Side: 3D Model*/}
-      <div className="w-full h-[75%] max-w-7xl flex flex-col items-center justify-center absolute bottom-0 pointer-events-none">
+      <div className="w-full h-[75%] max-w-7xl flex flex-col items-center justify-center absolute bottom-0 cursor-default">
         <Canvas camera={{ position: [0, 0, 1], fov: 45 }}>
           <ModelLights />
           <OrbitControls
