@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect, RefObject } from "react";
+import React, { useRef, useEffect } from "react";
 import { GlowCard, TitleHeader } from "@/components/globals";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,89 +7,18 @@ import { faThumbsUp, faEye, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { formatNumber } from "@/utils/formatters";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
-const videos: Video[] = [
-  {
-    title: "Video #1",
-    description:
-      "A high-energy visual capturing movement and excitement in a short format.",
-    platformType: ["INSTAGRAM", "TIKTOK"],
-    thumbnail: "/videos-thumbnails/video-1.jpg",
-    video: "./videos/video-1.mp4",
-    totalViews: 12000,
-    totalLikes: 950,
-    ref: null,
-  },
-  {
-    title: "Video #2",
-    description:
-      "An insightful look into a creative concept that sparks curiosity and engagement.",
-    platformType: ["FACEBOOK", "YOUTUBE"],
-    thumbnail: "/videos-thumbnails/video-2.jpg",
-    video: "./videos/video-2.mp4",
-    totalViews: 56000,
-    totalLikes: 4800,
-    ref: null,
-  },
-  {
-    title: "Video #3",
-    description:
-      "A visually dynamic scene with smooth transitions and engaging storytelling.",
-    platformType: ["INSTAGRAM", "YOUTUBE"],
-    thumbnail: "/videos-thumbnails/video-3.jpg",
-    video: "./videos/video-3.mp4",
-    totalViews: 30500,
-    totalLikes: 2100,
-    ref: null,
-  },
-  {
-    title: "Video #4",
-    description:
-      "A cinematic approach to content, capturing emotions and moments vividly.",
-    platformType: ["TIKTOK", "YOUTUBE"],
-    thumbnail: "/videos-thumbnails/video-4.jpg",
-    video: "./videos/video-4.mp4",
-    totalViews: 47000,
-    totalLikes: 3200,
-    ref: null,
-  },
-  {
-    title: "Video #5",
-    description:
-      "An informative breakdown of an interesting topic, engaging viewers with clarity.",
-    platformType: ["FACEBOOK", "INSTAGRAM"],
-    thumbnail: "/videos-thumbnails/video-5.jpg",
-    video: "./videos/video-5.mp4",
-    totalViews: 25000,
-    totalLikes: 1800,
-    ref: null,
-  },
-  {
-    title: "Video #6",
-    description:
-      "A fresh take on a trending idea, creatively executed for maximum impact.",
-    platformType: ["TIKTOK", "FACEBOOK"],
-    thumbnail: "/videos-thumbnails/video-6.jpg",
-    video: "./videos/video-6.mp4",
-    totalViews: 61000,
-    totalLikes: 5000,
-    ref: null,
-  },
-];
-
-interface Video {
-  title: string;
-  description: string;
-  platformType: string[];
-  thumbnail: string;
-  video: string;
-  totalViews: number;
-  totalLikes: number;
-  ref: RefObject<HTMLDivElement | null> | null;
-}
+import { videos } from "@/utils/placeholders";
 
 const VideosFeaturedProjectsSection = () => {
   const sectionRef = useRef(null);
+  const videosRefs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
 
   useGSAP(() => {
     // Animation for the main section
@@ -109,7 +38,7 @@ const VideosFeaturedProjectsSection = () => {
 
     videos.forEach((video, index) => {
       gsap.fromTo(
-        video.ref?.current,
+        videosRefs[index].current,
         {
           y: 100,
           opacity: 0,
@@ -118,9 +47,9 @@ const VideosFeaturedProjectsSection = () => {
           y: 0,
           opacity: 1,
           duration: 0.5,
-          delay: 0.3 * index + 2,
+          delay: 0.2 * index + 1,
           scrollTrigger: {
-            trigger: video.ref?.current,
+            trigger: videosRefs[index].current,
             start: "top bottom-=100",
           },
         },
@@ -131,7 +60,7 @@ const VideosFeaturedProjectsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full border-2 border-red-500 max-w-7xl min-h-[50vh] flex flex-col items-center gap-4 justify-center px-4 py-8"
+      className="w-full max-w-7xl min-h-[50vh] flex flex-col items-center gap-4 justify-center px-4 py-8"
     >
       <div className="w-full items-center justify-start gap-2 flex flex-col">
         <TitleHeader title="Featured Videos" sub="🚀 Get Visually Obsessed" />
@@ -142,7 +71,7 @@ const VideosFeaturedProjectsSection = () => {
             <div
               key={i}
               className="aspect-reel relative rounded-xl overflow-clip w-full"
-              ref={video.ref}
+              ref={videosRefs[i]}
             >
               <Image
                 src={video.thumbnail}
